@@ -1,0 +1,8 @@
+<div class="toast-stack">
+  @for (toast of (toasts$ | async); track toast.id) {
+    <div class="alert {{ alertClass(toast.kind) }} d-flex justify-content-between align-items-center shadow" role="alert">
+      <span>{{ toast.message }}</span>
+      <button type="button" class="btn-close" aria-label="Fermer" (click)="dismiss(toast.id)"></button>
+    </div>
+  }
+</div>

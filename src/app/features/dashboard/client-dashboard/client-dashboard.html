@@ -1,0 +1,54 @@
+<h3 class="mb-4">Bonjour {{ fullName }}</h3>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card bg-primary text-white">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-1">Solde actuel</h6>
+        <p class="fs-3 fw-bold mb-0">{{ balance$ | async | xof }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-subtitle text-secondary mb-1">Revenus</h6>
+        <p class="fs-4 fw-bold text-success mb-0">{{ totalIncome | xof }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-subtitle text-secondary mb-1">Dépenses</h6>
+        <p class="fs-4 fw-bold text-danger mb-0">{{ totalExpense | xof }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h6 class="card-title">Répartition Revenus / Dépenses</h6>
+    <div class="progress" style="height: 24px;">
+      <div class="progress-bar bg-success" [style.width.%]="incomeRatio">{{ incomeRatio }}%</div>
+      <div class="progress-bar bg-danger" [style.width.%]="expenseRatio">{{ expenseRatio }}%</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h6 class="card-title">Dernières transactions</h6>
+    <ul class="list-group list-group-flush">
+      @for (tx of recentTransactions; track tx.id) {
+        <li class="list-group-item d-flex justify-content-between">
+          <span>{{ transactionLabel(tx) }}</span>
+          <span>{{ tx.amount | xof }}</span>
+        </li>
+      } @empty {
+        <li class="list-group-item text-secondary">Aucune transaction récente.</li>
+      }
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="card" style="max-width: 480px;">
+  <div class="card-body">
+    <h5 class="card-title">Créer un portefeuille</h5>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" aria-label="Email" formControlName="email" />
+        @if (form.get('email')?.touched && form.get('email')?.invalid) {
+          <div class="text-danger small mt-1">Email valide requis.</div>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Téléphone</label>
+        <input type="text" class="form-control" placeholder="77 123 45 67" formControlName="phone" />
+        @if (form.get('phone')?.touched && form.get('phone')?.invalid) {
+          <div class="text-danger small mt-1">Numéro de téléphone invalide.</div>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Solde initial</label>
+        <input type="number" class="form-control" aria-label="Solde initial" formControlName="initialBalance" />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100" [disabled]="loading">Créer</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<h3 class="mb-4">Historique des transactions</h3>
+
+<form [formGroup]="filterForm" (ngSubmit)="applyFilters()" class="row g-2 mb-4">
+  <div class="col-auto">
+    <input type="date" class="form-control" aria-label="Date de début" formControlName="dateFrom" />
+  </div>
+  <div class="col-auto">
+    <input type="date" class="form-control" aria-label="Date de fin" formControlName="dateTo" />
+  </div>
+  <div class="col-auto">
+    <select class="form-select" aria-label="Type de transaction" formControlName="type">
+      <option value="">Tous les types</option>
+      <option value="DEPOSIT">Dépôt</option>
+      <option value="WITHDRAW">Retrait</option>
+      <option value="TRANSFER_IN">Transfert reçu</option>
+      <option value="TRANSFER_OUT">Transfert envoyé</option>
+      <option value="PAYMENT">Paiement facture</option>
+    </select>
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary">Filtrer</button>
+  </div>
+</form>
+
+<app-loader [show]="loading"></app-loader>
+
+@if (!loading) {
+  <table class="table table-hover bg-white">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Contrepartie</th>
+        <th>Frais</th>
+        <th>Montant</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (tx of transactions; track tx.id) {
+        <tr>
+          <td>{{ tx.timestamp | date: 'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ tx.type }}</td>
+          <td>{{ tx.counterparty || '-' }}</td>
+          <td>{{ tx.fee | xof }}</td>
+          <td>{{ tx.amount | xof }}</td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="5" class="text-center text-secondary">Aucune transaction.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

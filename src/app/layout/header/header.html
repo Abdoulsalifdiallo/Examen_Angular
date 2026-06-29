@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand bg-white border-bottom px-4 py-2">
+  <span class="navbar-brand fw-bold text-primary">BadWallet</span>
+
+  @if (session$ | async; as session) {
+    <div class="ms-auto d-flex align-items-center gap-3">
+      @if (session.role === 'client') {
+        <span class="fw-semibold text-success">{{ balance$ | async | xof }}</span>
+      }
+      <span class="text-secondary">{{ session.fullName }} ({{ session.role === 'agent' ? 'Agent' : 'Client' }})</span>
+      <button class="btn btn-outline-secondary btn-sm" (click)="logout()">Déconnexion</button>
+    </div>
+  }
+</nav>

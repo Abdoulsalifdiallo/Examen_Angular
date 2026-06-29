@@ -1,0 +1,38 @@
+<app-loader [show]="loading"></app-loader>
+
+@if (!loading) {
+  <table class="table table-hover bg-white">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Solde</th>
+        <th>Créé le</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (wallet of wallets; track wallet.id) {
+        <tr>
+          <td>{{ wallet.code }}</td>
+          <td>{{ wallet.email }}</td>
+          <td>{{ wallet.phoneNumber | phoneFormat }}</td>
+          <td>{{ wallet.balance | xof }}</td>
+          <td>{{ wallet.createdAt | date: 'dd/MM/yyyy' }}</td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="5" class="text-center text-secondary">Aucun portefeuille.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between align-items-center">
+    <span class="text-secondary small">{{ totalElements }} portefeuille(s) — page {{ page + 1 }} / {{ totalPages || 1 }}</span>
+    <div class="btn-group">
+      <button class="btn btn-outline-secondary btn-sm" [disabled]="page === 0" (click)="previous()">Précédent</button>
+      <button class="btn btn-outline-secondary btn-sm" [disabled]="page + 1 >= totalPages" (click)="next()">Suivant</button>
+    </div>
+  </div>
+}

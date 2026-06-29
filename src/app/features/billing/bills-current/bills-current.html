@@ -1,0 +1,50 @@
+<h3 class="mb-4">Factures impayées du mois</h3>
+
+<div class="d-flex gap-2 mb-4">
+  <select class="form-select w-auto" aria-label="Filtrer par fournisseur" [(ngModel)]="fournisseur" (ngModelChange)="load()">
+    <option value="">Tous les fournisseurs</option>
+    @for (f of fournisseurs; track f) {
+      <option [value]="f">{{ f }}</option>
+    }
+  </select>
+</div>
+
+<app-loader [show]="loading"></app-loader>
+
+@if (!loading) {
+  <table class="table table-hover bg-white">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Fournisseur</th>
+        <th>Référence</th>
+        <th>Échéance</th>
+        <th>Montant dû</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (facture of factures; track facture.reference) {
+        <tr>
+          <td><input type="checkbox" [attr.aria-label]="'Sélectionner la facture ' + facture.reference" [checked]="selectedRefs.has(facture.reference)" (change)="toggle(facture.reference)" /></td>
+          <td>{{ facture.serviceName }}</td>
+          <td>{{ facture.reference }}</td>
+          <td>{{ facture.dateEcheance | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ facture.montantDu | xof }}</td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="5" class="text-center text-secondary">Aucune facture impayée.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  @if (factures.length > 0) {
+    <div class="d-flex justify-content-between align-items-center">
+      <span class="fw-bold">Total sélectionné : {{ totalSelected | xof }}</span>
+      <button class="btn btn-primary" [disabled]="selectedRefs.size === 0 || paying" (click)="payerSelection()">
+        Payer la sélection
+      </button>
+    </div>
+  }
+}

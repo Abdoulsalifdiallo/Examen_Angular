@@ -1,0 +1,23 @@
+<h3 class="mb-4">Espace Agent de Guichet</h3>
+
+<ul class="nav nav-tabs mb-4">
+  <li class="nav-item">
+    <button class="nav-link" [class.active]="activeTab === 'list'" (click)="setTab('list')">Liste des portefeuilles</button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" [class.active]="activeTab === 'create'" (click)="setTab('create')">Créer un portefeuille</button>
+  </li>
+  <li class="nav-item">
+    <button class="nav-link" [class.active]="activeTab === 'search'" (click)="setTab('search')">Rechercher un client</button>
+  </li>
+</ul>
+
+<div [hidden]="activeTab !== 'list'">
+  <app-wallet-list></app-wallet-list>
+</div>
+<div [hidden]="activeTab !== 'create'">
+  <app-wallet-create (created)="onCreated()"></app-wallet-create>
+</div>
+<div [hidden]="activeTab !== 'search'">
+  <app-wallet-search></app-wallet-search>
+</div>

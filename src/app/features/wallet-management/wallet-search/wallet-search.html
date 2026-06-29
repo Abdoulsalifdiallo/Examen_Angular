@@ -1,0 +1,23 @@
+<form [formGroup]="form" (ngSubmit)="search()" class="d-flex gap-2 mb-4" style="max-width: 480px;">
+  <input type="text" class="form-control" placeholder="Rechercher par numéro de téléphone" formControlName="phone" />
+  <button type="submit" class="btn btn-primary" [disabled]="loading">Rechercher</button>
+</form>
+
+<app-loader [show]="loading"></app-loader>
+
+@if (notFound) {
+  <p class="text-danger">Aucun portefeuille trouvé pour ce numéro.</p>
+}
+
+@if (wallet) {
+  <div class="card mb-4" style="max-width: 480px;">
+    <div class="card-body">
+      <h5 class="card-title">{{ wallet.code }}</h5>
+      <p class="mb-1 text-secondary">{{ wallet.email }}</p>
+      <p class="mb-1 text-secondary">{{ wallet.phoneNumber | phoneFormat }}</p>
+      <p class="fw-bold fs-5 text-success">{{ wallet.balance | xof }}</p>
+    </div>
+  </div>
+
+  <app-deposit-withdraw [wallet]="wallet" (walletUpdated)="onWalletUpdated($event)"></app-deposit-withdraw>
+}

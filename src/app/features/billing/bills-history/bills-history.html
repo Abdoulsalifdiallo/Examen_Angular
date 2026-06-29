@@ -1,0 +1,30 @@
+<h3 class="mb-4">Historique des paiements de factures</h3>
+
+<app-loader [show]="loading"></app-loader>
+
+@if (!loading) {
+  <table class="table table-hover bg-white">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Fournisseur</th>
+        <th>Montant</th>
+        <th>Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (payment of payments; track payment.id) {
+        <tr>
+          <td>{{ payment.timestamp | date: 'dd/MM/yyyy HH:mm' }}</td>
+          <td>{{ payment.counterparty || '-' }}</td>
+          <td>{{ payment.amount | xof }}</td>
+          <td><span class="badge bg-success">Payée</span></td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="4" class="text-center text-secondary">Aucun paiement effectué.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

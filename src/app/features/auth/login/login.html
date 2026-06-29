@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="card shadow-sm" style="width: 380px;">
+    <div class="card-body p-4">
+      <h3 class="text-primary fw-bold mb-1">BadWallet</h3>
+      <p class="text-secondary mb-4">Connexion à votre espace</p>
+
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="mb-3">
+          <label class="form-label">Espace</label>
+          <select class="form-select" formControlName="role" aria-label="Espace" (change)="onRoleChange(form.get('role')!.value)">
+            <option value="client">Client</option>
+            <option value="agent">Agent de guichet</option>
+          </select>
+        </div>
+
+        @if (form.get('role')?.value === 'agent') {
+          <div class="mb-4">
+            <label class="form-label">Nom de l'agent</label>
+            <input type="text" class="form-control" aria-label="Nom de l'agent" formControlName="fullName" />
+            @if (form.get('fullName')?.touched && form.get('fullName')?.invalid) {
+              <div class="text-danger small mt-1">Le nom est requis.</div>
+            }
+          </div>
+        } @else {
+          <div class="mb-4">
+            <label class="form-label">Numéro de téléphone</label>
+            <input type="text" class="form-control" placeholder="77 123 45 67" formControlName="phone" />
+            @if (form.get('phone')?.touched && form.get('phone')?.invalid) {
+              <div class="text-danger small mt-1">Numéro de téléphone invalide.</div>
+            }
+          </div>
+        }
+
+        @if (errorMessage) {
+          <div class="alert alert-danger py-2">{{ errorMessage }}</div>
+        }
+
+        <button type="submit" class="btn btn-primary w-100" [disabled]="loading">Se connecter</button>
+      </form>
+    </div>
+  </div>
+</div>

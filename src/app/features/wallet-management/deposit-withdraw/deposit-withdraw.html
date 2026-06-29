@@ -1,0 +1,42 @@
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-body">
+        <h6 class="card-title text-success">Dépôt</h6>
+        <form [formGroup]="depositForm" (ngSubmit)="deposit()">
+          <div class="mb-2">
+            <input type="number" class="form-control" placeholder="Montant" formControlName="amount" />
+            @if (depositForm.get('amount')?.touched && depositForm.get('amount')?.invalid) {
+              <div class="text-danger small mt-1">Montant requis (minimum 1).</div>
+            }
+          </div>
+          <div class="mb-2">
+            <select class="form-select" aria-label="Méthode de paiement" formControlName="paymentMethod">
+              <option value="CREDIT_CARD">Carte de crédit</option>
+              <option value="WALLET_TARGET">Réseau interne de portefeuilles</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-success w-100" [disabled]="loading">Créditer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-body">
+        <h6 class="card-title text-danger">Retrait</h6>
+        <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
+          <div class="mb-2">
+            <input type="number" class="form-control" placeholder="Montant" formControlName="amount" />
+            @if (withdrawForm.get('amount')?.touched && withdrawForm.get('amount')?.invalid) {
+              <div class="text-danger small mt-1">Montant requis (minimum 1).</div>
+            }
+          </div>
+          <p class="text-secondary small">Frais : 1% du montant, plafonnés à 5000 XOF.</p>
+          <button type="submit" class="btn btn-danger w-100" [disabled]="loading">Débiter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
