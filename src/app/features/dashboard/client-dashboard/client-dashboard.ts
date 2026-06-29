@@ -9,6 +9,7 @@ import { Transaction } from '../../../models/transaction.model';
   selector: 'app-client-dashboard',
   standalone: false,
   templateUrl: './client-dashboard.html',
+  styleUrl: './client-dashboard.scss',
 })
 export class ClientDashboard implements OnInit {
   balance$: Observable<number>;
@@ -68,6 +69,23 @@ export class ClientDashboard implements OnInit {
         return `Paiement facture ${tx.counterparty ?? ''}`;
       default:
         return tx.type;
+    }
+  }
+
+  transactionIcon(tx: Transaction): string {
+    switch (tx.type) {
+      case 'DEPOSIT':
+        return 'bi-arrow-down-circle-fill text-success';
+      case 'WITHDRAW':
+        return 'bi-arrow-up-circle-fill text-danger';
+      case 'TRANSFER_IN':
+        return 'bi-box-arrow-in-down-left text-success';
+      case 'TRANSFER_OUT':
+        return 'bi-box-arrow-up-right text-danger';
+      case 'PAYMENT':
+        return 'bi-receipt text-warning';
+      default:
+        return 'bi-dot';
     }
   }
 }

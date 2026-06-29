@@ -1,8 +1,22 @@
-<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-  <div class="card shadow-sm" style="width: 380px;">
-    <div class="card-body p-4">
-      <h3 class="text-primary fw-bold mb-1">BadWallet</h3>
-      <p class="text-secondary mb-4">Connexion à votre espace</p>
+<div class="login-screen">
+  <div class="login-panel">
+    <div class="login-panel-content">
+      <span class="brand-mark-lg"><i class="bi bi-wallet2"></i></span>
+      <h1>BadWallet</h1>
+      <p>La plateforme de portefeuille électronique simple, rapide et sécurisée pour vos
+        transactions du quotidien.</p>
+      <ul class="login-features">
+        <li><i class="bi bi-lightning-charge-fill"></i> Transferts instantanés</li>
+        <li><i class="bi bi-receipt"></i> Paiement de factures en un clic</li>
+        <li><i class="bi bi-shield-check"></i> Suivi en temps réel de votre solde</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="login-form-side">
+    <div class="login-card">
+      <h3 class="mb-1">Connexion</h3>
+      <p class="text-secondary mb-4">Accédez à votre espace BadWallet</p>
 
       <form [formGroup]="form" (ngSubmit)="submit()">
         <div class="mb-3">
@@ -24,7 +38,10 @@
         } @else {
           <div class="mb-4">
             <label class="form-label">Numéro de téléphone</label>
-            <input type="text" class="form-control" placeholder="77 123 45 67" formControlName="phone" />
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+              <input type="text" class="form-control" placeholder="77 123 45 67" formControlName="phone" />
+            </div>
             @if (form.get('phone')?.touched && form.get('phone')?.invalid) {
               <div class="text-danger small mt-1">Numéro de téléphone invalide.</div>
             }
@@ -35,7 +52,12 @@
           <div class="alert alert-danger py-2">{{ errorMessage }}</div>
         }
 
-        <button type="submit" class="btn btn-primary w-100" [disabled]="loading">Se connecter</button>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
+          @if (loading) {
+            <span class="spinner-border spinner-border-sm me-2"></span>
+          }
+          Se connecter
+        </button>
       </form>
     </div>
   </div>

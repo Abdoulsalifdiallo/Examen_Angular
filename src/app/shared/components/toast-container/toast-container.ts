@@ -29,4 +29,15 @@ export class ToastContainer {
         return 'alert-info';
     }
   }
+
+  toastIcon(kind: Toast['kind']): string {
+    switch (kind) {
+      case 'success':
+        return 'bi-check-circle-fill';
+      case 'error':
+        return 'bi-exclamation-triangle-fill';
+      default:
+        return 'bi-info-circle-fill';
+    }
+  }
 }

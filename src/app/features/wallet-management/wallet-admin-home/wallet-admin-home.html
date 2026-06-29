@@ -1,14 +1,20 @@
-<h3 class="mb-4">Espace Agent de Guichet</h3>
+<h3 class="mb-4"><i class="bi bi-building me-2 text-primary"></i>Espace Agent de Guichet</h3>
 
 <ul class="nav nav-tabs mb-4">
   <li class="nav-item">
-    <button class="nav-link" [class.active]="activeTab === 'list'" (click)="setTab('list')">Liste des portefeuilles</button>
+    <button type="button" class="nav-link" [class.active]="activeTab === 'list'" (click)="setTab('list')">
+      <i class="bi bi-list-ul me-1"></i> Liste des portefeuilles
+    </button>
   </li>
   <li class="nav-item">
-    <button class="nav-link" [class.active]="activeTab === 'create'" (click)="setTab('create')">Créer un portefeuille</button>
+    <button type="button" class="nav-link" [class.active]="activeTab === 'create'" (click)="setTab('create')">
+      <i class="bi bi-plus-circle me-1"></i> Créer un portefeuille
+    </button>
   </li>
   <li class="nav-item">
-    <button class="nav-link" [class.active]="activeTab === 'search'" (click)="setTab('search')">Rechercher un client</button>
+    <button type="button" class="nav-link" [class.active]="activeTab === 'search'" (click)="setTab('search')">
+      <i class="bi bi-search me-1"></i> Rechercher un client
+    </button>
   </li>
 </ul>
 

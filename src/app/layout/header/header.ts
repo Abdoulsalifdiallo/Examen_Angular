@@ -9,6 +9,7 @@ import { Session } from '../../models/auth.model';
   selector: 'app-header',
   standalone: false,
   templateUrl: './header.html',
+  styleUrl: './header.scss',
 })
 export class Header implements OnInit {
   session$: Observable<Session | null>;

@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
 import { WalletApiService } from '../../../services/wallet-api.service';
-import { Transaction } from '../../../models/transaction.model';
+import { Transaction, TransactionType } from '../../../models/transaction.model';
 
 @Component({
   selector: 'app-transaction-history',
@@ -57,5 +57,37 @@ export class TransactionHistory implements OnInit {
       return true;
     });
     this.cdr.markForCheck();
+  }
+
+  typeLabel(type: TransactionType): string {
+    switch (type) {
+      case 'DEPOSIT':
+        return 'Dépôt';
+      case 'WITHDRAW':
+        return 'Retrait';
+      case 'TRANSFER_IN':
+        return 'Transfert reçu';
+      case 'TRANSFER_OUT':
+        return 'Transfert envoyé';
+      case 'PAYMENT':
+        return 'Paiement';
+      default:
+        return type;
+    }
+  }
+
+  typeBadgeClass(type: TransactionType): string {
+    switch (type) {
+      case 'DEPOSIT':
+      case 'TRANSFER_IN':
+        return 'bg-success-subtle text-success-emphasis';
+      case 'WITHDRAW':
+      case 'TRANSFER_OUT':
+        return 'bg-danger-subtle text-danger-emphasis';
+      case 'PAYMENT':
+        return 'bg-warning-subtle text-warning-emphasis';
+      default:
+        return 'bg-secondary-subtle text-secondary-emphasis';
+    }
   }
 }

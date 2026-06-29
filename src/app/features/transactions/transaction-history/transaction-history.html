@@ -1,4 +1,4 @@
-<h3 class="mb-4">Historique des transactions</h3>
+<h3 class="mb-4"><i class="bi bi-list-ul me-2 text-primary"></i>Historique des transactions</h3>
 
 <form [formGroup]="filterForm" (ngSubmit)="applyFilters()" class="row g-2 mb-4">
   <div class="col-auto">
@@ -39,10 +39,10 @@
       @for (tx of transactions; track tx.id) {
         <tr>
           <td>{{ tx.timestamp | date: 'dd/MM/yyyy HH:mm' }}</td>
-          <td>{{ tx.type }}</td>
+          <td><span class="badge {{ typeBadgeClass(tx.type) }}">{{ typeLabel(tx.type) }}</span></td>
           <td>{{ tx.counterparty || '-' }}</td>
           <td>{{ tx.fee | xof }}</td>
-          <td>{{ tx.amount | xof }}</td>
+          <td class="fw-semibold">{{ tx.amount | xof }}</td>
         </tr>
       } @empty {
         <tr>

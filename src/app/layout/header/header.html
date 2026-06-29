@@ -1,13 +1,27 @@
-<nav class="navbar navbar-expand bg-white border-bottom px-4 py-2">
-  <span class="navbar-brand fw-bold text-primary">BadWallet</span>
+<nav class="app-header">
+  <div class="brand">
+    <span class="brand-mark"><i class="bi bi-wallet2"></i></span>
+    <span class="brand-name">BadWallet</span>
+  </div>
 
   @if (session$ | async; as session) {
     <div class="ms-auto d-flex align-items-center gap-3">
       @if (session.role === 'client') {
-        <span class="fw-semibold text-success">{{ balance$ | async | xof }}</span>
+        <div class="balance-pill">
+          <i class="bi bi-cash-coin"></i>
+          <span>{{ balance$ | async | xof }}</span>
+        </div>
       }
-      <span class="text-secondary">{{ session.fullName }} ({{ session.role === 'agent' ? 'Agent' : 'Client' }})</span>
-      <button class="btn btn-outline-secondary btn-sm" (click)="logout()">Déconnexion</button>
+      <div class="user-chip">
+        <span class="user-avatar">{{ session.fullName.charAt(0).toUpperCase() }}</span>
+        <div class="user-meta">
+          <span class="user-name">{{ session.fullName }}</span>
+          <span class="user-role">{{ session.role === 'agent' ? 'Agent' : 'Client' }}</span>
+        </div>
+      </div>
+      <button class="btn btn-outline-secondary btn-sm" (click)="logout()">
+        <i class="bi bi-box-arrow-right"></i> Déconnexion
+      </button>
     </div>
   }
 </nav>

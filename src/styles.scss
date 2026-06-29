@@ -1,16 +1,286 @@
-/* You can add global styles to this file, and also import other style files */
+/* ==========================================================================
+   BadWallet — Design system
+   ========================================================================== */
+
+:root {
+  --bw-primary: #4f46e5;
+  --bw-primary-dark: #4338ca;
+  --bw-primary-light: #eef2ff;
+  --bw-accent: #06b6d4;
+  --bw-success: #16a34a;
+  --bw-success-light: #ecfdf5;
+  --bw-danger: #e11d48;
+  --bw-danger-light: #fef2f2;
+  --bw-warning: #d97706;
+  --bw-ink: #0f172a;
+  --bw-ink-soft: #475569;
+  --bw-muted: #94a3b8;
+  --bw-border: #e7e9f3;
+  --bw-bg: #f5f6fb;
+  --bw-surface: #ffffff;
+  --bw-radius-sm: 10px;
+  --bw-radius: 14px;
+  --bw-radius-lg: 20px;
+  --bw-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --bw-shadow: 0 4px 16px rgba(31, 41, 90, 0.07);
+  --bw-shadow-lg: 0 16px 40px rgba(31, 41, 90, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
 
 body {
-  background-color: #f5f6f8;
+  margin: 0;
+  background-color: var(--bw-bg);
+  color: var(--bw-ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--bw-ink);
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: var(--bw-primary);
+  text-decoration: none;
+}
+
+/* ----------------------------- Cards ----------------------------------- */
+
+.card {
+  border: 1px solid var(--bw-border);
+  border-radius: var(--bw-radius);
+  box-shadow: var(--bw-shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--bw-shadow);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* ----------------------------- Buttons ---------------------------------- */
+
+.btn {
+  border-radius: var(--bw-radius-sm);
+  font-weight: 600;
+  padding: 0.55rem 1.15rem;
+  letter-spacing: 0.01em;
+  border-width: 1.5px;
+  transition: all 0.15s ease;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--bw-primary) 0%, var(--bw-primary-dark) 100%);
+  border-color: transparent;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--bw-primary-dark) 0%, #3730a3 100%);
+  transform: translateY(-1px);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #22c55e 0%, var(--bw-success) 100%);
+  border-color: transparent;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #fb7185 0%, var(--bw-danger) 100%);
+  border-color: transparent;
+}
+
+.btn-outline-secondary {
+  border-color: var(--bw-border);
+  color: var(--bw-ink-soft);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--bw-primary-light);
+  border-color: var(--bw-primary-light);
+  color: var(--bw-primary-dark);
+}
+
+.btn-sm {
+  border-radius: 8px;
+  padding: 0.35rem 0.75rem;
+}
+
+/* ----------------------------- Forms ------------------------------------ */
+
+.form-control,
+.form-select {
+  border: 1.5px solid var(--bw-border);
+  border-radius: var(--bw-radius-sm);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--bw-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--bw-ink-soft);
+  margin-bottom: 0.4rem;
+}
+
+/* ----------------------------- Tables ------------------------------------ */
+
+.table {
+  border-radius: var(--bw-radius);
+  overflow: hidden;
+  --bs-table-bg: transparent;
+}
+
+.table thead th {
+  background-color: var(--bw-primary-light);
+  color: var(--bw-primary-dark);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  border-bottom: none;
+  padding: 0.85rem 1rem;
+}
+
+.table tbody td {
+  padding: 0.85rem 1rem;
+  vertical-align: middle;
+  border-bottom-color: var(--bw-border);
+  font-size: 0.92rem;
+}
+
+.table-hover tbody tr:hover {
+  background-color: var(--bw-primary-light);
+}
+
+/* ----------------------------- Badges / alerts --------------------------- */
+
+.badge {
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.4em 0.85em;
+}
+
+.alert {
+  border: none;
+  border-radius: var(--bw-radius-sm);
+  font-weight: 500;
+}
+
+.alert-success {
+  background-color: var(--bw-success-light);
+  color: var(--bw-success);
+}
+
+.alert-danger {
+  background-color: var(--bw-danger-light);
+  color: var(--bw-danger);
+}
+
+.alert-info {
+  background-color: var(--bw-primary-light);
+  color: var(--bw-primary-dark);
+}
+
+/* ----------------------------- Nav tabs / pills --------------------------- */
+
+.nav-tabs {
+  border-bottom: 1.5px solid var(--bw-border);
+  gap: 0.25rem;
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  border-radius: var(--bw-radius-sm) var(--bw-radius-sm) 0 0;
+  font-weight: 600;
+  color: var(--bw-ink-soft);
+  padding: 0.65rem 1.1rem;
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--bw-primary-dark);
+  background-color: var(--bw-primary-light);
+  border-bottom: 2px solid var(--bw-primary);
+}
+
+.progress {
+  border-radius: 999px;
+  background-color: var(--bw-border);
+}
+
+/* ----------------------------- Modal ------------------------------------- */
 
 .modal-backdrop-custom {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(15, 23, 42, 0.55);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
   z-index: 1050;
 }
 
 .modal {
   z-index: 1055;
+}
+
+.modal-content {
+  border: none;
+  border-radius: var(--bw-radius-lg);
+  box-shadow: var(--bw-shadow-lg);
+}
+
+/* ----------------------------- Layout ------------------------------------- */
+
+.app-content {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* ----------------------------- Scrollbar ---------------------------------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7cbe8;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
 }

@@ -1,9 +1,10 @@
-<aside class="sidebar bg-dark text-white p-3">
-  <ul class="nav nav-pills flex-column gap-1">
+<aside class="sidebar">
+  <ul class="nav flex-column gap-1">
     @for (link of (links$ | async); track link.path) {
       <li class="nav-item">
-        <a class="nav-link text-white" [routerLink]="link.path" routerLinkActive="active bg-primary">
-          {{ link.label }}
+        <a class="sidebar-link" [routerLink]="link.path" routerLinkActive="active">
+          <i class="bi {{ link.icon }}"></i>
+          <span>{{ link.label }}</span>
         </a>
       </li>
     }

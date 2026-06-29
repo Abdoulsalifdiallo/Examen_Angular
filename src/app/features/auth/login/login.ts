@@ -10,6 +10,7 @@ import { normalizePhone } from '../../../shared/utils/phone.util';
   selector: 'app-login',
   standalone: false,
   templateUrl: './login.html',
+  styleUrl: './login.scss',
 })
 export class Login {
   form: FormGroup;
