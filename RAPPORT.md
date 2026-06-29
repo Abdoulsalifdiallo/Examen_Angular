@@ -16,6 +16,11 @@ Deux interceptors HTTP globaux (`AuthInterceptor`, `ErrorInterceptor`) et un gua
 (`roleGuard`) protègent les routes par rôle et centralisent la gestion des erreurs API sous forme
 de toasts contextuels (ex. "Solde insuffisant").
 
+Côté UI, un design system minimal a été centralisé dans `styles.scss` (variables CSS de couleurs,
+ombres, rayons), avec la charte de couleurs `#2087d9` / `#123065` et les icônes Bootstrap Icons,
+plutôt que de styler chaque composant isolément — ce qui garantit une cohérence visuelle (cartes,
+tableaux, boutons, badges) sur l'ensemble des écrans Agent et Client sans dupliquer de CSS.
+
 ## Difficultés rencontrées
 
 **Découverte tardive du vrai backend.** Le cahier des charges laissait penser qu'aucun backend
