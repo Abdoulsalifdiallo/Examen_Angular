@@ -40,7 +40,7 @@
 }
 
 .stat-card--primary {
-  background: linear-gradient(135deg, var(--bw-primary) 0%, #4338ca 100%);
+  background: linear-gradient(135deg, var(--bw-primary) 0%, var(--bw-primary-dark) 100%);
   border: none;
 
   .stat-icon {

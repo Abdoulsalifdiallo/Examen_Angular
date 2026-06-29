@@ -3,10 +3,10 @@
    ========================================================================== */
 
 :root {
-  --bw-primary: #4f46e5;
-  --bw-primary-dark: #4338ca;
-  --bw-primary-light: #eef2ff;
-  --bw-accent: #06b6d4;
+  --bw-primary: #2087d9;
+  --bw-primary-dark: #123065;
+  --bw-primary-light: #e7f1fb;
+  --bw-accent: #2087d9;
   --bw-success: #16a34a;
   --bw-success-light: #ecfdf5;
   --bw-danger: #e11d48;
@@ -93,7 +93,7 @@ a {
 }
 
 .btn:focus {
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
+  box-shadow: 0 0 0 3px rgba(32, 135, 217, 0.18);
 }
 
 .btn-primary {
@@ -102,7 +102,7 @@ a {
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--bw-primary-dark) 0%, #3730a3 100%);
+  background: linear-gradient(135deg, var(--bw-primary-dark) 0%, #0d1f42 100%);
   transform: translateY(-1px);
 }
 
@@ -146,7 +146,7 @@ a {
 .form-control:focus,
 .form-select:focus {
   border-color: var(--bw-primary);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+  box-shadow: 0 0 0 3px rgba(32, 135, 217, 0.12);
 }
 
 .form-label {

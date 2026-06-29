@@ -1,7 +1,7 @@
 .sidebar {
   min-width: 260px;
   min-height: 100%;
-  background: linear-gradient(190deg, #161a3a 0%, #0f1129 100%);
+  background: linear-gradient(190deg, #123065 0%, #0a1c3d 100%);
   padding: 1.25rem 0.85rem;
 }
 
@@ -28,8 +28,8 @@
   }
 
   &.active {
-    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+    background: linear-gradient(135deg, #2087d9 0%, #1569ad 100%);
     color: #ffffff;
-    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+    box-shadow: 0 4px 14px rgba(32, 135, 217, 0.4);
   }
 }

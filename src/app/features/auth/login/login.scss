@@ -6,7 +6,7 @@
 .login-panel {
   flex: 1.1;
   display: none;
-  background: linear-gradient(155deg, #4f46e5 0%, #4338ca 55%, #312e81 100%);
+  background: linear-gradient(155deg, #2087d9 0%, #1a5fa3 55%, #123065 100%);
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -34,7 +34,7 @@
     width: 320px;
     height: 320px;
     border-radius: 50%;
-    background: rgba(6, 182, 212, 0.18);
+    background: rgba(255, 255, 255, 0.1);
     bottom: -100px;
     left: -80px;
   }
@@ -89,7 +89,7 @@
 }
 
 .login-features i {
-  color: #a5b4fc;
+  color: #9fd0f5;
   font-size: 1.1rem;
 }
 
